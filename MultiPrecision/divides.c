@@ -5,7 +5,6 @@
  *      Author: Franck
  */
 
-#include<stdlib.h>
 #include"structures.c"
 
 unsigned char isInferior(BN* a, BN* b);
