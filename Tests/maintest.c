@@ -16,13 +16,11 @@ int main(void)
 	setvbuf (stdout, NULL, _IONBF, 0);
 	BN* a=initialize("120");
 	BN* b=initialize("10");
-	BN* c=initialize("125");
-	BN* d=initialize("5");
+	BN* c=initialize("3");
 
-	printf("%i\n",isInferior(a,b));
-	printf("%i\n",isInferior(b,c));
-	printf("%i\n",isInferior(a,c));
-	printf("%i\n",isInferior(a,d));
+	printf("%i\n",divides(a,b));
+	printf("%i\n",divides(a,c));
+	printf("%i\n",divides(b,c));
 	return 0;
 }
 

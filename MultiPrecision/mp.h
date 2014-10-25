@@ -19,4 +19,6 @@ unsigned char isEqual(BN* a,BN* b);
 
 unsigned char divides(BN* N, BN* d);
 
+unsigned char isInferior(BN* a, BN* b);
+
 #endif /* MP_H_ */

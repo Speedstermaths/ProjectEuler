@@ -21,7 +21,7 @@ BN* initialize(char* str)
 	while(cmpt>0)
 	{
 		if(cmpt>strlen(str))
-			(*i).cont=0;
+			(*i).cont=48;
 		else
 			{
 				(*i).cont=*j;
