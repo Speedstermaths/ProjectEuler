@@ -20,3 +20,17 @@ typedef struct bignumber
 	DG* head;
 	DG* tail;
 }BN;
+
+typedef struct EratoPrime
+{
+	struct EratoPrime* prev;
+	BN* num;
+	unsigned char isPrime;
+	struct EratoPrime* next;
+}EPr;
+
+typedef struct EratoArray
+{
+	EPr* head;
+	EPr* tail;
+}EArr;

@@ -21,4 +21,6 @@ unsigned char divides(BN* N, BN* d);
 
 unsigned char isInferior(BN* a, BN* b);
 
+EArr* bneratoInit(BN* maxi);
+
 #endif /* MP_H_ */
