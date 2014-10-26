@@ -14,13 +14,10 @@ int main(void)
 {
 	/*Problème d'affichage console*/
 	setvbuf (stdout, NULL, _IONBF, 0);
-	BN* a=initialize("120");
-	BN* b=initialize("10");
-	BN* c=initialize("3");
+	BN* a=initialize("10");
 
-	printf("%i\n",divides(a,b));
-	printf("%i\n",divides(a,c));
-	printf("%i\n",divides(b,c));
+	EArr* tab=bnerato(a);
+
 	return 0;
 }
 

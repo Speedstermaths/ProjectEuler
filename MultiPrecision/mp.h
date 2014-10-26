@@ -23,4 +23,6 @@ unsigned char isInferior(BN* a, BN* b);
 
 EArr* bneratoInit(BN* maxi);
 
+EArr* bnerato(BN* maxi);
+
 #endif /* MP_H_ */
