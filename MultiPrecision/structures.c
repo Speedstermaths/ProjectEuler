@@ -5,7 +5,7 @@
  *      Author: Franck
  */
 
-#define size 20
+#define size 5
 
 typedef struct digit
 {

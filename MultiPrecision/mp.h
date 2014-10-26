@@ -27,4 +27,10 @@ EArr* bnerato(BN* maxi);
 
 int bneratoprintf(EArr* tab);
 
+EArr* bnerato2(BN* maxi);
+
+BN* factrec(BN* n);
+
+BN* minus(BN* a, BN* b);
+
 #endif /* MP_H_ */
