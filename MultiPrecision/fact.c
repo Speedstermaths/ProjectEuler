@@ -5,15 +5,21 @@
  *      Author: Franck
  */
 
-#include<stdlib.h>
 #include"structures.c"
 
-unsigned char isEqual(BN* a,BN* b);
+BN* initialize(char* str);
+BN* minus(BN* a, BN* b);
+unsigned char isInferior(BN* a, BN* b);
+BN* multiply(BN* a, BN* b);
 
-BN* factrec(BN* n)
+BN* fact(BN* n)
 {
-	if(isEqual(n,0))
-		return 1;
-	else
-		return multiply(n,factrec(minus(n,1)));
+	BN* fac=n;
+	BN* i=n;
+	while(isInferior(initialize("2"),i))
+	{
+		fac=multiply(fac,minus(i,initialize("1")));
+		i=minus(i,initialize("1"));
+	}
+	return fac;
 }

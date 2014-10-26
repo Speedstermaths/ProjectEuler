@@ -12,12 +12,14 @@
 
 int main(void)
 {
+	BN* a;
+
 	/*Problème d'affichage console*/
 	setvbuf (stdout, NULL, _IONBF, 0);
-	BN* a;
+
 	a=initialize("7");
 
-	bnprintf(recfact(a));
+	bneratoprintf(bnerato(7));
 
 	return 0;
 }

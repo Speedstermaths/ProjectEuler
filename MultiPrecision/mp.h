@@ -29,7 +29,9 @@ int bneratoprintf(EArr* tab);
 
 EArr* bnerato2(BN* maxi);
 
-BN* factrec(BN* n);
+BN* fact(BN* n);
+
+BN* multiply(BN* a, BN* b);
 
 BN* minus(BN* a, BN* b);
 

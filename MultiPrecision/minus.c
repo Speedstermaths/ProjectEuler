@@ -8,10 +8,12 @@
 #include<stdlib.h>
 #include"structures.c"
 
+BN* sum(BN* a, BN* b);
+
 BN* minus(BN* a, BN* b)
 {
 	BN* delta=initialize("0");
-	while(isInferior(sum(a,delta),a))
+	while(isInferior(sum(sum(b,delta),initialize("1")),a))
 	{
 		delta=sum(delta,initialize("1"));
 	}
