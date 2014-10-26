@@ -14,9 +14,11 @@ int main(void)
 {
 	/*Problème d'affichage console*/
 	setvbuf (stdout, NULL, _IONBF, 0);
-	BN* a=initialize("10");
+	BN* a=initialize("600851475143");
 
 	EArr* tab=bnerato(a);
+
+	bneratoprintf(tab);
 
 	return 0;
 }

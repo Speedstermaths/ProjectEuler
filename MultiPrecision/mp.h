@@ -25,4 +25,6 @@ EArr* bneratoInit(BN* maxi);
 
 EArr* bnerato(BN* maxi);
 
+int bneratoprintf(EArr* tab);
+
 #endif /* MP_H_ */

@@ -23,14 +23,14 @@ typedef struct bignumber
 
 typedef struct EratoPrime
 {
-	struct EratoPrime* prev;
+	struct EratoPrime* backw;
 	BN* num;
 	unsigned char isPrime;
-	struct EratoPrime* next;
+	struct EratoPrime* forw;
 }EPr;
 
 typedef struct EratoArray
 {
-	EPr* head;
-	EPr* tail;
+	EPr* begin;
+	EPr* end;
 }EArr;

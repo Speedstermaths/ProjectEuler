@@ -14,54 +14,87 @@ unsigned char isInferior(BN* a, BN* b);
 BN* sum(BN* a, BN* b);
 int bnprintf(BN* n);
 
+int bneratoprintf(EArr* tab)
+{
+	EPr* i=(*tab).begin;
+	while(i!=NULL)
+	{
+		if((*i).isPrime)
+		{
+			bnprintf((*i).num);
+			printf("\n");
+		}
+		i=(*i).forw;
+	}
+	return 0;
+}
+
 EArr* bneratoInit(BN* maxi)
 {
 	EArr* tab=malloc(sizeof(EArr));
-	EPr* n=(*tab).head;
+	EPr* n=malloc(sizeof(EPr));
 	BN* cmpt=malloc(sizeof(BN));
-	(*n).prev=NULL;
+	(*tab).begin=n;
+	if(n==NULL)
+		printf("Echec !!!");
+	(*n).backw=NULL;
 	for(cmpt=initialize("0");isInferior(cmpt,maxi);cmpt=sum(cmpt,initialize("1")))
 	{
 		(*n).num=cmpt;
 		(*n).isPrime=1;
-		(*n).next=malloc(sizeof(EPr));
-		(*(*n).next).prev=n;
-		n=(*n).next;
+		(*n).forw=malloc(sizeof(EPr));
+		(*(*n).forw).backw=n;
+		n=(*n).forw;
 	}
-	n=(*n).prev;
-	free((*n).next);
-	(*n).next=NULL;
-	(*tab).tail=n;
+	n=(*n).backw;
+	free((*n).forw);
+	(*n).forw=NULL;
+	(*tab).end=n;
 	return tab;
 }
 
 EArr* bnerato(BN* maxi)
 {
 	EArr* tab=bneratoInit(maxi);
-	EPr* n=(*tab).head;
-	EPr* j;
-	BN* i;
+	EPr* n=(*tab).begin;
+	EPr* j=malloc(sizeof(EPr));
+	EPr* r=malloc(sizeof(EPr));
+	BN* i=malloc(sizeof(BN));
 	(*n).isPrime=0;
-	n=(*n).next;
+	n=(*n).forw;
 	(*n).isPrime=0;
-	n=(*n).next;
+	n=(*n).forw;
 	while(n!=NULL)
 	{
+/*		printf("Valeur de n :");
+		bnprintf((*n).num);
+		printf("\n");*/
 		if((*n).isPrime==1)
 		{
 			j=n;
-			while(isInferior((*j).num,maxi))
+			while(j!=NULL)
 			{
-				for(i=initialize("1");isInferior(i,(*j).num);i=sum(i,initialize("1")))
+				r=j;
+				for(i=initialize("1");isInferior(i,(*r).num)&&j!=NULL;i=sum(i,initialize("1")))
 				{
-					n=(*n).next;
+/*					bnprintf(i);
+					printf("\n");
+					bnprintf((*j).num);
+					printf("\n");
+					printf("%i\n",isInferior(i,(*j).num));*/
+					if(j!=NULL)
+						j=(*j).forw;
 				}
-				(*n).isPrime=0;
-				printf("Je raye de la carte");
-				bnprintf((*n).num);
-				j=n;
+				if(j!=NULL)
+				{
+					(*j).isPrime=0;
+/*					printf("Je raye de la carte");
+					bnprintf((*j).num);
+					printf("\n");*/
+				}
 			}
 		}
+		n=(*n).forw;
 	}
 	return tab;
 }
