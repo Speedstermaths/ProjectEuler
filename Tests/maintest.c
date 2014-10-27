@@ -19,7 +19,7 @@ int main(void)
 
 	a=initialize("7");
 
-	bneratoprintf(bnerato(7));
+	bneratoprintf(bnerato2(a));
 
 	return 0;
 }

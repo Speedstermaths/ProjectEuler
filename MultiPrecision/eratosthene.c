@@ -13,7 +13,7 @@ BN* initialize(char* str);
 unsigned char isInferior(BN* a, BN* b);
 BN* sum(BN* a, BN* b);
 int bnprintf(BN* n);
-
+BN* minus(BN* a, BN* b);
 int bneratoprintf(EArr* tab)
 {
 	EPr* i=(*tab).begin;
@@ -93,7 +93,7 @@ EArr* bnerato2(BN* maxi)
 	EPr* j=malloc(sizeof(EPr));
 	EPr* r=malloc(sizeof(EPr));
 	BN* i=malloc(sizeof(BN));
-	unsigned short int bool=0;
+/*	unsigned short int bool=0;*/
 	n=(*n).forw;
 	free((*n).backw);
 	n=(*n).forw;
@@ -102,14 +102,16 @@ EArr* bnerato2(BN* maxi)
 	(*tab).begin=n;
 	while(n!=NULL)
 	{
-		bool=0;
+/*		bool=0;
+*/
 		if((*n).isPrime==1)
 		{
 			j=n;
 			r=j;
 			while(j!=NULL)
 			{
-				if(bool==0)
+				r=j;
+/*				if(bool==0)
 				{
 					for(i=initialize("1");isInferior(i,(*r).num)&&j!=NULL;i=sum(i,initialize("1")))
 					{
@@ -125,6 +127,12 @@ EArr* bnerato2(BN* maxi)
 							j=(*j).forw;
 					}
 				}
+*/
+				while(isInferior((*j).num,minus((*r).num,initialize("1")))&&j!=NULL)
+					{
+						if(j!=NULL)
+							j=(*j).forw;
+					}
 				if(j!=NULL&&(*j).isPrime==1)
 				{
 					(*j).isPrime=0;
@@ -134,7 +142,8 @@ EArr* bnerato2(BN* maxi)
 					j=(*j).forw;
 					if(j!=NULL)
 						free((*j).backw);
-					bool=1;
+/*					bool=1;
+ */
 				}
 			}
 		}
