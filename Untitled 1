@@ -1,0 +1,15 @@
+/*					for(i=initialize("1");isInferior(i,(*r).num)&&j!=NULL;i=sum(i,initialize("1")))
+					{
+						if(j!=NULL)
+							j=(*j).forw;
+					}
+				}
+				else
+				{
+					for(i=initialize("2");isInferior(i,(*r).num)&&j!=NULL;i=sum(i,initialize("1")))
+					{
+						if(j!=NULL)
+							j=(*j).forw;
+					}
+				}
+*/

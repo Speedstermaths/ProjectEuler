@@ -13,13 +13,18 @@
 int main(void)
 {
 	BN* a;
+	EArr* T;
 
 	/*Problème d'affichage console*/
 	setvbuf (stdout, NULL, _IONBF, 0);
 
 	a=initialize("7");
 
-	bneratoprintf(bnerato2(a));
+	T=bnerato2(a);
+
+	printf("toto\n");
+
+	bneratoprintf(T);
 
 	return 0;
 }

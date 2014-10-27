@@ -92,62 +92,139 @@ EArr* bnerato2(BN* maxi)
 	EPr* n=(*tab).begin;
 	EPr* j=malloc(sizeof(EPr));
 	EPr* r=malloc(sizeof(EPr));
-	BN* i=malloc(sizeof(BN));
-/*	unsigned short int bool=0;*/
+	unsigned short int bool=0;
 	n=(*n).forw;
 	free((*n).backw);
 	n=(*n).forw;
 	free((*n).backw);
 	(*n).backw=NULL;
-	(*tab).begin=n;
-	while(n!=NULL)
+	if((*tab).begin=n)
 	{
-/*		bool=0;
-*/
-		if((*n).isPrime==1)
+		printf("Bah begin de tab est bien n LOL");
+		bnprintf((*(*tab).begin).num);
+	}
+	while((*n).forw!=NULL)
+	{
+		bool=0;
+		if(((*n).isPrime)&&(n!=NULL))
 		{
+			printf("n vaut là ici maintenant");
+			bnprintf((*n).num);
 			j=n;
 			r=j;
 			while(j!=NULL)
 			{
 				r=j;
-/*				if(bool==0)
+				printf("r vaut maintenant");
+				bnprintf((*r).num);
+				printf("\n");
+				if(bool==0)
 				{
-					for(i=initialize("1");isInferior(i,(*r).num)&&j!=NULL;i=sum(i,initialize("1")))
+					printf("bool vaut 0000\n");
+					if(j==NULL)
+						printf("J est NULL\n");
+					else
+						bnprintf((*j).num);
+					if(n==NULL)
+						printf("merde, n est null");
+					printf("Je vais rentrer dans le while...\n");
+					printf("j, r, n valent \n");
+					bnprintf((*j).num);
+					printf("\n");
+					bnprintf((*r).num);
+					printf("\n");
+					bnprintf((*n).num);
+					printf("\n");
+					if((isInferior((*j).num,sum((*r).num,minus((*n).num,initialize("1"))))))
+						printf("Je devrais bien y rentrer dans ce foutu while !");
+					while((j!=NULL)&&(r!=NULL)&&(isInferior((*j).num,sum((*r).num,minus((*n).num,initialize("1"))))))
 					{
+						printf("Dans le while ?");
 						if(j!=NULL)
-							j=(*j).forw;
+						j=(*j).forw;
+						if(j==NULL)
+							printf("Je suis rentré, j'ai incrémenté j, et j est NULL...\n");
+						if(j!=NULL)
+						{
+							printf("\n J'avance d'une case et j'ai :");
+							bnprintf((*j).num);
+							printf(" J'ai avancé d'une case.\n Voici la condition d'arrêt :");
+							bnprintf(sum((*r).num,minus((*n).num,initialize("1"))));
+							printf("\n");
+						}
 					}
 				}
 				else
 				{
-					for(i=initialize("2");isInferior(i,(*r).num)&&j!=NULL;i=sum(i,initialize("1")))
+					while((j!=NULL)&&(r!=NULL)&&(isInferior((*j).num,sum((*r).num,minus((*n).num,initialize("2"))))))
 					{
+						printf("Je rentre dans le while...\n");
 						if(j!=NULL)
+						{
+							printf("Je vais incrémenter j...");
 							j=(*j).forw;
+							printf("\n j est maintenant incrémenté.\n j=");
+							if(j!=NULL)
+								bnprintf((*j).num);
+							else
+								printf("NULL!");
+							printf("\n");
+						}
+						if(j!=NULL)
+						{
+							printf("\n J'avance d'une case et j'ai :");
+							bnprintf((*j).num);
+							printf(" J'ai avancé d'une case.\n Voici la condition d'arrêt :");
+							bnprintf(sum((*r).num,minus((*n).num,initialize("2"))));
+							printf("\n");
+						}
 					}
 				}
-*/
-				while(isInferior((*j).num,minus((*r).num,initialize("1")))&&j!=NULL)
-					{
-						if(j!=NULL)
-							j=(*j).forw;
-					}
 				if(j!=NULL&&(*j).isPrime==1)
 				{
 					(*j).isPrime=0;
 					(*(*j).backw).forw=(*j).forw;
 					if((*j).forw!=NULL)
+					{
 						(*(*j).forw).backw=(*j).backw;
-					j=(*j).forw;
-					if(j!=NULL)
+						j=(*j).forw;
 						free((*j).backw);
-/*					bool=1;
- */
+						printf("Je libère mon précédent !");
+						bnprintf((*j).num);
+						printf("c'est ce que je vaux mainteannt\n");
+					}
+					else
+					{
+						j=(*j).backw;
+						free((*j).forw);
+						(*j).forw=NULL;
+					}
+					bool=1;
+					printf("J'ai passé bool à 1.\n");
 				}
 			}
 		}
-		n=(*n).forw;
+		if(n!=NULL)
+		{
+			if((*n).forw!=NULL)
+				n=(*n).forw;
+			printf("n vaut");
+			if(n!=NULL)
+				bnprintf((*n).num);
+			else
+				printf("NULL!");
+			printf("\n");
+		}
 	}
+	printf("Je quitte mon cher while...\n");
+	n=(*n).backw;
+	printf("\n J'ai reculé ! Je vais libérer mon suivant...");
+	if((*n).forw!=NULL)
+		free((*n).forw);
+	else
+		printf("C'était pas la peine en fait ^^\n");
+	printf("C'est fait !");
+	(*tab).end=n;
+	printf("C'est la fin, you know.\n\n");
 	return tab;
 }
